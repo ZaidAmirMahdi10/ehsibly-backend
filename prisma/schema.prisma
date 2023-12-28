@@ -24,3 +24,5 @@ model Invoice {
   swift         String
   date          DateTime
 }
+
+
