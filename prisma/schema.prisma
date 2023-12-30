@@ -16,9 +16,9 @@ datasource db {
 model Invoice {
   id            Int      @id @default(autoincrement())
   invoiceNumber String   @unique
-  amountDinar   Float
-  amountUS      Float
-  amountRNB     Float
+  amountDinar   String
+  amountUS      String
+  amountRNB     String
   customerNumber String
   notes         String
   swift         String
