@@ -1,6 +1,9 @@
 {
   "devDependencies": {
-    "prisma": "^5.7.1"
+    "prisma": "^5.7.1",
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
