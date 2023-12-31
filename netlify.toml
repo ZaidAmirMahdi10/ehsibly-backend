@@ -8,4 +8,7 @@
     handler = "functions/invoices.handler"
     external_node_modules = ["@prisma/client"]
 
-
+[[headers]]
+  for = "/*"
+    [headers.values]
+      Access-Control-Allow-Origin = ["*"]
