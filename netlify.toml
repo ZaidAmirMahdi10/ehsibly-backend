@@ -3,6 +3,9 @@
   functions = "functions"
   publish = "dist"
 
-
-[dev]
-  functions = "lambda"
+[functions]
+  [functions.api]
+    external_node_modules = [
+      "module-one",
+      "module-two"
+    ]
