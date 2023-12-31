@@ -35,3 +35,4 @@ exports.handler = async (event, context) => {
     await prisma.$disconnect();
   }
 };
+

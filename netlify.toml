@@ -8,3 +8,4 @@
     handler = "functions/invoices.handler"
     external_node_modules = ["@prisma/client"]
 
+
