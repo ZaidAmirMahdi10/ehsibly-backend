@@ -1,6 +1,8 @@
 [build]
-  command = "yarn build" # Adjust this if you have a build script
-  functions = "lambda"
+  command = "yarn install && yarn build"
+  functions = "functions"
+  publish = "dist"
+
 
 [dev]
   functions = "lambda"
