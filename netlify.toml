@@ -1,11 +1,10 @@
 [build]
-  command = "yarn install && yarn build"
+  command = "yarn install && yarn prisma:generate"
   functions = "functions"
   publish = "dist"
 
 [functions]
-  [functions.api]
-    external_node_modules = [
-      "module-one",
-      "module-two"
-    ]
+  [functions.invoices]
+    handler = "functions/invoices.handler"
+    external_node_modules = ["@prisma/client"]
+
