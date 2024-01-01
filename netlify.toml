@@ -6,7 +6,10 @@
 [functions]
   [functions.invoices]
     handler = "functions/invoices.handler"
-    external_node_modules = ["@prisma/client"]
+    external_node_modules = [
+        "module-one",
+        "module-two"
+    ]
 
 [[headers]]
   for = "/*"
