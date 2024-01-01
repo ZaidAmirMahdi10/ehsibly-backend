@@ -1,11 +1,12 @@
 {
-  "name": "your-project-name",
+  "name": "ali-alwash-backend",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "prisma:generate": "prisma generate",  
-    "prestart": "yarn prisma:generate"
+    "migrate": "npx prisma migrate deploy", 
+    "prestart": "yarn prisma:generate",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
