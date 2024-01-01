@@ -49,4 +49,7 @@ app.post('/invoices', async (req, res) => {
 
 // ... other route handlers (GET, PUT, DELETE) ...
 
+
+
+module.exports = app;
 module.exports.handler = serverless(app);
