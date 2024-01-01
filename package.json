@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "prestart": "yarn prisma:generate",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",  // Updated script name
+    "prestart": "yarn prisma:generate"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
