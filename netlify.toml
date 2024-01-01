@@ -1,20 +1,7 @@
 [build]
   command = "yarn install && yarn prisma:generate"
   functions = "functions"
-  publish = "dist"
 
 [functions]
   [functions.invoices]
     handler = "functions/invoices.handler"
-    external_node_modules = [
-        "module-one",
-        "module-two"
-    ]
-
-[[headers]]
-  for = "/*"
-    [headers.values]
-      Access-Control-Allow-Origin = ["*"]
-      Access-Control-Allow-Methods = ["GET", "POST", "PUT", "DELETE"]
-      Access-Control-Allow-Headers = ["Content-Type"]
-
