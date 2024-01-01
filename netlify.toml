@@ -1,7 +1,8 @@
 [build]
-  command = "yarn install && yarn prisma:generate"
+  command = "yarn install && yarn prisma:generate && yarn migrate"
   functions = "functions"
   publish = "functions"
+
 
 [functions]
   [functions.invoices]
