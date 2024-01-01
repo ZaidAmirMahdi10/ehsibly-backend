@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/invoices', async (req, res) => {
+app.post('/.netlify/functions/invoices', async (req, res) => {
   try {
     console.log('POST /invoices - Request received'); // Add this line
     const { invoiceNumber, amountDinar, amountUS, amountRNB, customerNumber, notes, swift, date } = req.body;
@@ -47,7 +47,6 @@ app.post('/invoices', async (req, res) => {
   }
 });
 
-// ... other route handlers (GET, PUT, DELETE) ...
 
 
 
