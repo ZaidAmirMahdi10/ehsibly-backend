@@ -22,19 +22,22 @@ app.use((req, res, next) => {
 
 app.post('/.netlify/functions/postInvoice', async (req, res) => {
   try {
-    console.log('POST /invoices - Request received'); // Add this line
-    const { invoiceNumber, amountDinar, amountUS, amountRNB, customerNumber, notes, swift, date } = req.body;
-
+    console.log('POST /invoices - Request received'); 
+    const { invoiceNumber, customerName, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
+    
     const newInvoice = await prisma.invoice.create({
       data: {
-        invoiceNumber,
-        amountDinar,
-        amountUS,
-        amountRNB,
-        customerNumber,
-        notes,
-        swift,
-        date,
+        invoiceNumber, 
+        customerName, 
+        amountDinar, 
+        amountOtherCurrency, 
+        otherCurrency, 
+        originalCost, 
+        received, 
+        left, 
+        swift, 
+        date, 
+        notes
       },
     });
 

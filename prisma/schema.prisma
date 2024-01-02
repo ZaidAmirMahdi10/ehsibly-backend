@@ -14,15 +14,18 @@ datasource db {
 }
 
 model Invoice {
-  id            Int      @id @default(autoincrement())
-  invoiceNumber String   @unique
-  amountDinar   String
-  amountUS      String
-  amountRNB     String
-  customerNumber String
-  notes         String
-  swift         String
-  date          DateTime
+  id                      Int      @id @default(autoincrement())
+  invoiceNumber           String   @unique
+  customerName            String
+  amountDinar             String
+  amountOtherCurrency     String
+  otherCurrency           String
+  originalCost            String
+  received                String
+  left                    String
+  swift                   String
+  notes                   String
+  date                    DateTime
 }
 
 

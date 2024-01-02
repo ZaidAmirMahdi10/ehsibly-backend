@@ -20,19 +20,22 @@ app.use((req, res, next) => {
 app.put('/.netlify/functions/updateInvoice/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { invoiceNumber, amountDinar, amountUS, amountRNB, customerNumber, notes, swift, date } = req.body;
+    const { invoiceNumber, customerName, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
 
     const updatedInvoice = await prisma.invoice.update({
       where: { id: parseInt(id, 10) },
       data: {
-        invoiceNumber,
-        amountDinar,
-        amountUS,
-        amountRNB,
-        customerNumber,
-        notes,
-        swift,
-        date,
+        invoiceNumber, 
+        customerName, 
+        amountDinar, 
+        amountOtherCurrency, 
+        otherCurrency, 
+        originalCost, 
+        received, 
+        left, 
+        swift, 
+        date, 
+        notes
       },
     });
 
