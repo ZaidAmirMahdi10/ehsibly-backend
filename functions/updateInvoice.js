@@ -38,6 +38,7 @@ app.put('/.netlify/functions/updateInvoice/:id', async (req, res) => {
 
     res.json(updatedInvoice);
     console.log('PUT /updateInvoice - Response sent');
+    console.log(updatedInvoice);
   } catch (error) {
     console.error('Error updating invoice:', error);
     res.status(500).json({ error: 'Internal server error' });
