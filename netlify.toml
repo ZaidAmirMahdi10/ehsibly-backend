@@ -5,5 +5,27 @@
 
 
 [functions]
-  [functions.invoices]
-    handler = "functions/invoices.handler"
+
+[functions.postInvoices]
+  external_node_modules = [
+    "module-one",
+    "module-two"
+  ]
+
+[functions.getInvoices]
+  external_node_modules = [
+    "module-one",
+    "module-two"
+  ]
+
+[functions.updateInvoice]
+  external_node_modules = [
+    "module-one",
+    "module-two"
+  ]
+
+[functions.deleteInvoice]
+  external_node_modules = [
+    "module-one",
+    "module-two"
+  ]
