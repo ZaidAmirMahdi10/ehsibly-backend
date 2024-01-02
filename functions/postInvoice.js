@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/.netlify/functions/postInvoices', async (req, res) => {
+app.post('/.netlify/functions/postInvoice', async (req, res) => {
   try {
     console.log('POST /invoices - Request received'); // Add this line
     const { invoiceNumber, amountDinar, amountUS, amountRNB, customerNumber, notes, swift, date } = req.body;

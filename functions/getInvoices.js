@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/.netlify/functions/getInvoice', async (req, res) => {
+app.get('/.netlify/functions/getInvoices', async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
     let invoices;
