@@ -72,7 +72,7 @@ app.post('/invoices', async (req, res) => {
 app.put('/invoices/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { invoiceNumber, customerName, companyName, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
+    const { invoiceNumber, customerName, companyName, containerNumber, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
 
     const updatedInvoice = await prisma.invoice.update({
       where: { id: parseInt(id, 10) },
@@ -80,6 +80,7 @@ app.put('/invoices/:id', async (req, res) => {
         invoiceNumber, 
         customerName,
         companyName, 
+        containerNumber,
         amountDinar, 
         amountOtherCurrency, 
         otherCurrency, 
