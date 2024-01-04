@@ -1,4 +1,3 @@
-// functions/updateInvoice.js
 const { PrismaClient } = require('@prisma/client');
 const serverless = require('serverless-http');
 const express = require('express');
@@ -17,26 +16,41 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json()); // Middleware to parse JSON requests
+
 app.put('/.netlify/functions/updateInvoice/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { invoiceNumber, customerName, companyName, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
+    const {
+      invoiceNumber,
+      customerName,
+      companyName,
+      amountDinar,
+      amountOtherCurrency,
+      otherCurrency,
+      originalCost,
+      received,
+      left,
+      swift,
+      date,
+      notes,
+    } = req.body;
 
     const updatedInvoice = await prisma.invoice.update({
       where: { id: parseInt(id, 10) },
       data: {
-        invoiceNumber, 
-        customerName, 
+        invoiceNumber,
+        customerName,
         companyName,
-        amountDinar, 
-        amountOtherCurrency, 
-        otherCurrency, 
-        originalCost, 
-        received, 
-        left, 
-        swift, 
-        date, 
-        notes
+        amountDinar,
+        amountOtherCurrency,
+        otherCurrency,
+        originalCost,
+        received,
+        left,
+        swift,
+        date,
+        notes,
       },
     });
 
