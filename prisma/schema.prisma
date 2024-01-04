@@ -17,13 +17,18 @@ model Invoice {
   id                      Int      @id @default(autoincrement())
   invoiceNumber           String   @unique
   customerName            String
+  containerNumber         String
   companyName             String
+
   amountDinar             String
   amountOtherCurrency     String
   otherCurrency           String
+
   originalCost            String
+
   received                String
   left                    String
+  
   swift                   String
   notes                   String
   date                    DateTime

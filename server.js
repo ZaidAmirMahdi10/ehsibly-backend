@@ -40,12 +40,13 @@ app.get('/invoices', async (req, res) => {
 
 app.post('/invoices', async (req, res) => {
   try {
-    const { invoiceNumber, customerName, companyName, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
+    const { invoiceNumber, customerName, companyName, containerNumber, amountDinar, amountOtherCurrency, otherCurrency, originalCost, received, left, swift, date, notes } = req.body;
 
     const newInvoice = await prisma.invoice.create({
       data: {
         invoiceNumber, 
         customerName,
+        containerNumber,
         companyName, 
         amountDinar, 
         amountOtherCurrency, 
