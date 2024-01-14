@@ -7,7 +7,7 @@
   - Added the required column `amountOtherCurrency` to the `Invoice` table without a default value. This is not possible if the table is not empty.
   - Added the required column `customerName` to the `Invoice` table without a default value. This is not possible if the table is not empty.
   - Added the required column `left` to the `Invoice` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `originalCost` to the `Invoice` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `bankName` to the `Invoice` table without a default value. This is not possible if the table is not empty.
   - Added the required column `otherCurrency` to the `Invoice` table without a default value. This is not possible if the table is not empty.
   - Added the required column `received` to the `Invoice` table without a default value. This is not possible if the table is not empty.
 
@@ -19,6 +19,6 @@ ALTER TABLE `Invoice` DROP COLUMN `amountRNB`,
     ADD COLUMN `amountOtherCurrency` VARCHAR(191) NOT NULL,
     ADD COLUMN `customerName` VARCHAR(191) NOT NULL,
     ADD COLUMN `left` VARCHAR(191) NOT NULL,
-    ADD COLUMN `originalCost` VARCHAR(191) NOT NULL,
+    ADD COLUMN `bankName` VARCHAR(191) NOT NULL,
     ADD COLUMN `otherCurrency` VARCHAR(191) NOT NULL,
     ADD COLUMN `received` VARCHAR(191) NOT NULL;

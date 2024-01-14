@@ -24,7 +24,7 @@ model Invoice {
   amountOtherCurrency     String
   otherCurrency           String
 
-  originalCost            String
+  bankName            String
 
   received                String
   left                    String
