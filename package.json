@@ -6,7 +6,8 @@
     "start": "node server.js",
     "migrate": "npx prisma migrate deploy",
     "prestart": "yarn prisma:generate",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "reset-db": "npx prisma migrate dev --name update_invoice_schema --create-only"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
