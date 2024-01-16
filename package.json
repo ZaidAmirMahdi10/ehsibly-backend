@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "migrate": "npx prisma migrate deploy", 
+    "migrate": "npx prisma migrate deploy",
     "prestart": "yarn prisma:generate",
     "prisma:generate": "prisma generate"
   },
@@ -12,6 +12,7 @@
     "@prisma/client": "^5.7.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {

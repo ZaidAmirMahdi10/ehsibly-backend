@@ -13,7 +13,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  username     String   @unique
+  password     String
+  phoneNumber  String?
+  token        String?
+  invoices     Invoice[]
+}
+
 model Invoice {
+  userId                  Int
+  user                    User     @relation(fields: [userId], references: [id])
   id                      Int      @id @default(autoincrement())
   invoiceNumber           String   @unique
   customerName            String
@@ -24,7 +36,7 @@ model Invoice {
   amountOtherCurrency     String
   otherCurrency           String
 
-  bankName            String
+  bankName                String
 
   received                String
   left                    String
@@ -33,6 +45,5 @@ model Invoice {
   notes                   String
   date                    DateTime
 }
-
 
 

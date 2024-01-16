@@ -9,7 +9,7 @@ const app = express();
 // CORS middleware (place it before your route handlers)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, user-id'); // Add user-id to allowed headers
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -20,11 +20,29 @@ app.use((req, res, next) => {
 app.get('/.netlify/functions/getInvoices', async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
+
+    // Log the userId from the request headers
+    const userIdHeader = req.headers['user-id'];
+    console.log('Received userId from headers:', userIdHeader);
+
     let invoices;
+
+    if (!userIdHeader) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const userId = parseInt(userIdHeader, 10);
+
+    if (isNaN(userId)) {
+      return res.status(400).json({ error: 'Invalid user ID' });
+    }
 
     if (startDate && endDate) {
       invoices = await prisma.invoice.findMany({
         where: {
+          userId: {
+            equals: userId,
+          },
           date: {
             gte: new Date(startDate),
             lte: new Date(endDate),
@@ -32,7 +50,13 @@ app.get('/.netlify/functions/getInvoices', async (req, res) => {
         },
       });
     } else {
-      invoices = await prisma.invoice.findMany();
+      invoices = await prisma.invoice.findMany({
+        where: {
+          userId: {
+            equals: userId,
+          },
+        },
+      });
     }
 
     res.json(invoices);
