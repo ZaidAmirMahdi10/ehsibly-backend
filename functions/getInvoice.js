@@ -1,4 +1,4 @@
-// functions/getInvoices.js
+// functions/getInvoice.js
 const { PrismaClient } = require('@prisma/client');
 const serverless = require('serverless-http');
 const express = require('express');
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/.netlify/functions/getInvoices', async (req, res) => {
+app.get('/.netlify/functions/getInvoice', async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
 

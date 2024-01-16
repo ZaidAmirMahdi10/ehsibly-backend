@@ -20,7 +20,7 @@
     "module-two"
   ]
 
-[functions.getInvoices]
+[functions.getInvoice]
   external_node_modules = [
     "module-one",
     "module-two"
