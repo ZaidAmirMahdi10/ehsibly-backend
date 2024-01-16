@@ -6,10 +6,9 @@ const express = require('express');
 const prisma = new PrismaClient();
 const app = express();
 
-// CORS middleware (place it before your route handlers)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, user-id'); // Add user-id to allowed headers
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, user-id, authorization'); // Add authorization to allowed headers
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
