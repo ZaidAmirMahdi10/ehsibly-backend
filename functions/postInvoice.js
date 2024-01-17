@@ -22,6 +22,14 @@ app.use((req, res, next) => {
 app.post('/.netlify/functions/postInvoice', async (req, res) => {
   try {
     console.log('POST /invoices - Request received');
+
+    // Extract userId from headers
+    const userId = req.headers['authorization'];
+
+    if (!userId) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
     const { invoiceNumber, customerName, companyName, containerNumber, amountDinar, amountOtherCurrency, otherCurrency, bankName, received, left, swift, date, notes } = req.body;
 
     const newInvoice = await prisma.invoice.create({
@@ -44,8 +52,8 @@ app.post('/.netlify/functions/postInvoice', async (req, res) => {
     });
 
     res.json(newInvoice);
-    console.log('POST /invoices - Response sent'); // Add this line
-    console.log("Invoice created successfully");
+    console.log('POST /invoices - Response sent');
+    console.log('Invoice created successfully');
     console.log(newInvoice);
   } catch (error) {
     console.error('Error adding new invoice:', error);
