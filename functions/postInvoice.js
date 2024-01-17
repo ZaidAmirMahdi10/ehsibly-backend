@@ -1,4 +1,4 @@
-// functions/invoices.js
+// functions/postInvoice.js
 const { PrismaClient } = require('@prisma/client');
 const serverless = require('serverless-http');
 const express = require('express');
@@ -26,6 +26,7 @@ app.post('/.netlify/functions/postInvoice', async (req, res) => {
 
     const newInvoice = await prisma.invoice.create({
       data: {
+        userId: parseInt(userId, 10), // Parse userId as an integer
         invoiceNumber,
         customerName,
         companyName,
