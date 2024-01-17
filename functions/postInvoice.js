@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 // CORS middleware (place it before your route handlers)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Correct the header name to Authorization
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, user-id, authorization'); // Add authorization to allowed headers
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -23,18 +23,25 @@ app.post('/.netlify/functions/postInvoice', async (req, res) => {
   try {
     console.log('POST /invoices - Request received');
 
-    // Extract userId from headers
-    const userId = req.headers['authorization'];
+    // Log the userId from the request headers
+    const userIdHeader = req.headers['user-id'];
+    console.log('Received userId from headers:', userIdHeader);
 
-    if (!userId) {
+    if (!userIdHeader) {
       return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const userId = parseInt(userIdHeader, 10);
+
+    if (isNaN(userId)) {
+      return res.status(400).json({ error: 'Invalid user ID' });
     }
 
     const { invoiceNumber, customerName, companyName, containerNumber, amountDinar, amountOtherCurrency, otherCurrency, bankName, received, left, swift, date, notes } = req.body;
 
     const newInvoice = await prisma.invoice.create({
       data: {
-        userId: parseInt(userId, 10),
+        userId: userId,
         invoiceNumber,
         customerName,
         companyName,
