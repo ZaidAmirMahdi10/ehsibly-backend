@@ -1,3 +1,4 @@
+// functions/updateInvoice.js
 const { PrismaClient } = require('@prisma/client');
 const serverless = require('serverless-http');
 const express = require('express');
@@ -8,7 +9,7 @@ const app = express();
 // CORS middleware (place it before your route handlers)
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, authorization'); // Add authorization to allowed headers
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();

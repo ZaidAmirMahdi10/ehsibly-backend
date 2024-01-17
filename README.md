@@ -11,4 +11,4 @@ npx prisma generate
 
 
 # Netlify For restting database
-  command = "yarn install && yarn prisma:generate && yarn reset-db"
+  command = "yarn install && yarn prisma migrate reset --force && yarn prisma:generate"
