@@ -51,7 +51,7 @@ app.post('/.netlify/functions/postInvoice', async (req, res) => {
         otherCurrency,
         bankName,
         received,
-        left,
+        left: left.toString(),  // Convert to string
         swift,
         date,
         notes
