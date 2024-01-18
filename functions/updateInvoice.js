@@ -50,7 +50,7 @@ app.put('/.netlify/functions/updateInvoice/:id', async (req, res) => {
         otherCurrency,
         bankName,
         received,
-        left,
+        left: left.toString(),  // Convert to string
         swift,
         date,
         notes,
