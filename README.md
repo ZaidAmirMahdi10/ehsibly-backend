@@ -7,8 +7,8 @@ npx prisma generate
  
 
 # Netlify For normal build
-  command = "yarn install && yarn prisma:generate && yarn migrate"
+command = "yarn install && yarn prisma:generate && yarn migrate"
 
 
 # Netlify For restting database
-  command = "yarn install && yarn prisma migrate reset --force && yarn prisma:generate"
+command = "yarn install && yarn prisma migrate reset --force && yarn prisma:generate"

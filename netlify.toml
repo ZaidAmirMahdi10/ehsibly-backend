@@ -1,5 +1,5 @@
 [build]
-  command = "yarn install && yarn prisma:generate && yarn migrate"
+  command = "yarn install && yarn prisma migrate reset --force && yarn prisma:generate"
   functions = "functions"
   publish = "functions"
 

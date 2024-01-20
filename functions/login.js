@@ -20,21 +20,21 @@ app.use((req, res, next) => {
 
 app.post('/.netlify/functions/login', express.json(), async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    console.log(`Login attempt for username: ${username}`);
+    console.log(`Login attempt for email: ${email}`);
 
-    // Perform authentication, check if the username and password match a user in the database
+    // Perform authentication, check if the email and password match a user in the database
     const user = await prisma.user.findUnique({
-      where: { username },
+      where: { email },
     });
 
     if (!user || user.password !== password) {
-      console.log(`Authentication failed for username: ${username}`);
+      console.log(`Authentication failed for email: ${email}`);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    console.log(`User ${username} authenticated successfully`);
+    console.log(`User ${email} authenticated successfully`);
 
     // Generate a token
     const token = jwt.sign({ userId: user.id }, 'your-secret-key', { expiresIn: '1h' });
@@ -45,10 +45,10 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
       data: { token },
     });
 
-    console.log(`Token generated and stored for user: ${username}`);
+    console.log(`Token generated and stored for user: ${email}`);
 
     // Send the token back to the client
-    res.json({ token, user: { id: user.id, username: user.username } });
+    res.json({ token, user: { id: user.id, email: user.email } });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: 'Internal server error' });
