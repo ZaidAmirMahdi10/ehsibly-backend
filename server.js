@@ -84,41 +84,6 @@ app.post('/login', async (req, res) => {
 
 
 
-// app.post('/invoices', async (req, res) => {
-//   try {
-//     const { userId, invoiceNumber, customerName, companyName, containerNumber, amountDinar, amountOtherCurrency, otherCurrency, bankName, received, left, swift, date, notes } = req.body;
-
-//     const newInvoice = await prisma.invoice.create({
-//       data: {
-//         userId: parseInt(userId, 10), // Parse userId as an integer
-//         invoiceNumber: "",
-//         customerName: "",
-//         containerNumber: "",
-//         companyName: "",
-//         amountDinar: "",
-//         amountOtherCurrency: "",
-//         otherCurrency: "",
-//         bankName: "",
-//         received: "",
-//         left: "",
-//         swift: "",
-//         date: "",
-//         notes: ""
-//       },
-//     });
-
-//     res.json(newInvoice);
-//     console.log("Invoice created successfully");
-//     console.log(newInvoice);
-//   } catch (error) {
-//     console.error('Error creating invoice:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
-
-
-
-
 
 
 
@@ -171,6 +136,8 @@ app.get('/invoices', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 
 app.post('/invoices', async (req, res) => {
