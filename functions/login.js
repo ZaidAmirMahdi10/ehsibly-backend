@@ -27,7 +27,7 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
     // Perform authentication, check if the email and password match a user in the database
     const user = await prisma.user.findUnique({
       where: { email },
-      select: { id: true, email: true, username: true }, // Include the 'username' field
+      // select: { id: true, email: true, username: true }, // Include the 'username' field
     });
 
     if (!user || user.password !== password) {
