@@ -35,7 +35,9 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    console.log(`User ${user} authenticated successfully`);
+    // console.log(`User ${user} authenticated successfully`);
+
+    console.log('User:', JSON.stringify(user), 'authenticated successfully');
 
     // Generate a token
     const token = jwt.sign({ userId: user.id }, 'your-secret-key', { expiresIn: '1h' });
