@@ -27,7 +27,7 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
     // Perform authentication, check if the email and password match a user in the database
     const user = await prisma.user.findUnique({
       where: { email },
-      // select: { id: true, email: true, username: true }, // Include the 'username' field
+      select: { id: true, email: true, username: true }, 
     });
 
     if (!user || user.password !== password) {
@@ -35,7 +35,7 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    console.log(`User ${email} authenticated successfully`);
+    console.log(`User ${user} authenticated successfully`);
 
     // Generate a token
     const token = jwt.sign({ userId: user.id }, 'your-secret-key', { expiresIn: '1h' });
