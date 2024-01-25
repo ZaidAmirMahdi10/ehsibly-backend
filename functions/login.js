@@ -51,7 +51,7 @@ app.post('/.netlify/functions/login', express.json(), async (req, res) => {
     console.log(`Token generated and stored for user: ${email}`);
 
     // Send the token back to the client
-    res.json({ token, user: { id: user.id, email: user.email } });
+    res.json({ token, user: { id: user.id, email: user.email, username: user.username } });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ error: 'Internal server error' });
